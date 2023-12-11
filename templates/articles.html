@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Articles</h2>
+<hr>
+{% if articles %}
+    {% for article  in articles  %}
+    <div class="row">
+        <div class="col-lg-10">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{article.title}}</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">Posted on {{article.created_date}} by {{article.author.username}}</div>
+                
+                </header>
+                <hr>
+                <!-- Preview image figure-->
+                {% if article.article_image %}
+                    <figure class="mb-4"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." /></figure>
+                
+                {% endif %}
+                
+                <!-- Post content-->
+                <p>
+                    {{article.content|safe}}
+                    
+                </p>
+            </article>
+            <hr>
+        </div>
+    
+    </div>
+    
+    {% endfor %}
+{% else %}
+<div class="alert alert-danger">
+    There is no article
+</div>
+{% endif %}
+{% endblock body %}

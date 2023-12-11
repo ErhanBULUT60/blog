@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <h3>Blog Main Page</h3>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Welcome to bagtofly blog page </h1>
+          <p class="lead">You can write your bagtofly and travel experincess here</p>
+        </div>
+      </div>
+      <p>
+         {% if request.user.is_authenticated  %}
+            Already Signin, {{request.user.username}}
+         {%else%}
+            User hasn't Signin
+         {% endif %}
+
+      </p>
+{% endblock body %}
